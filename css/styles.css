@@ -1,16 +1,23 @@
-
 body {
-    
 }
 a {
-    text-decoration: none;
-    
+  text-decoration: none;
 }
 .social-links .social-links-link:hover,
 .social-links .social-links-link:focus {
-    text-decoration: underline;
-    color: #404bbf;
+  text-decoration: underline;
+  color: #404bbf;
 }
 li {
-    list-style-type: none;
+  list-style-type: none;
+}
+
+.box {
+  border-radius: 10px;
+  display: flex;
+}
+
+.ggg {
+  width: 100px;
+  height: 110px;
 }
