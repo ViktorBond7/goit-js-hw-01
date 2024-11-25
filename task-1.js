@@ -1,9 +1,46 @@
-`use strict`
+`use strict`;
 
-function makeTransaction(quantity, pricePerDroid) {
-    return `You ordered ${quantity} droids worth ${quantity * pricePerDroid} credits!`;
-}
+let arr1 = [1, 1, 1, 0, 0, 1, 1];
 
-console.log(makeTransaction(5, 3000)); // "You ordered 5 droids worth 15000 credits!"
-console.log(makeTransaction(3, 1000)); // "You ordered 3 droids worth 3000 credits!"
-console.log(makeTransaction(10, 500)); // "You ordered 10 droids worth 5000 credits!"
+const foo = (arr) => {
+  let maxLendx = 0;
+  let thisLendx = 0;
+
+  arr.forEach((element) => {
+    if (element === 1) {
+      thisLendx++;
+    } else {
+      thisLendx = 0;
+    }
+    maxLendx = Math.max(thisLendx, maxLendx);
+  });
+  return maxLendx;
+};
+// console.log(foo(arr1));
+
+const string = "([{}])";
+
+const test = (str) => {
+  let index = [];
+
+  for (let i = 0; i < str.length; i++) {
+    const element = str[i];
+
+    if (element === "[" || element === "(" || element === "{") {
+      index.push(element);
+    } else {
+      if (
+        index.length === 0 ||
+        (element === "]" && index[index.length - 1] !== "[") ||
+        (element === ")" && index[index.length - 1] !== "(") ||
+        (element === "}" && index[index.length - 1] !== "{")
+      ) {
+        return false;
+      }
+      index.pop();
+    }
+  }
+  return !index.length;
+};
+
+console.log(test(string));

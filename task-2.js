@@ -1,9 +1,23 @@
-`use strict`
+`use strict`;
 
-function getShippingMessage(country, price, deliveryFee) {
-    return `Shipping to ${country} will cost ${price + deliveryFee} credits`;
-}
+const people = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 25 },
+  { name: "Charlie", age: 30 },
+  { name: "Charlie111", age: 40 },
+];
 
-console.log(getShippingMessage("Australia", 120, 50)); // "Shipping to Australia will cost 170 credits"
-console.log(getShippingMessage("Germany", 80, 20)); // "Shipping to Germany will cost 100 credits"
-console.log(getShippingMessage("Sweden", 100, 20)); // "Shipping to Sweden will cost 120 credits"
+const groupedByAge = people.reduce((acc, person) => {
+  if (!acc[person.age]) {
+    acc[person.age] = [];
+  }
+
+  acc[person.age].push(person);
+  console.log("acc", acc);
+  return acc;
+}, {});
+
+console.log(groupedByAge);
+
+// { '25': [ { name: 'Alice', age: 25 }, { name: 'Bob', age: 25 } ],
+//   '30': [ { name: 'Charlie', age: 30 } ] }
