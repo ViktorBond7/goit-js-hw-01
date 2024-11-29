@@ -1,62 +1,63 @@
 `use strict`;
 
-let arr1 = [1, 1, 1, 0, 0, 1, 1];
+// const isSimilar = (arr1, arr2) => {
+//   if (arr1.lenght !== arr2.lenght) return false;
 
-const foo = arr => {
-  let maxLendx = 0;
-  let thisLendx = 0;
+//   const countMap = {};
 
-  arr.forEach(element => {
-    if (element === 1) {
-      thisLendx++;
-    } else {
-      thisLendx = 0;
-    }
-    maxLendx = Math.max(thisLendx, maxLendx);
-  });
-  return maxLendx;
-};
-// console.log(foo(arr1));
+//   for (let i = 0; i < arr1.length; i++) {
+//     countMap[arr1[i]] = (countMap[arr1[i]] || 0) + 1;
+//   }
 
-// const string = "([{}])";
+//   for (let i = 0; i < arr2.length; i++) {
+//     if (!(arr2[i] in countMap)) return false;
 
-// const test = (str) => {
-//   let index = [];
+//     countMap[arr2[i]] -= 1;
+//   }
 
-//   for (let i = 0; i < str.length; i++) {
-//     const element = str[i];
-
-//     if (element === "[" || element === "(" || element === "{") {
-//       index.push(element);
-//     } else {
-//       if (
-//         index.length === 0 ||
-//         (element === "]" && index[index.length - 1] !== "[") ||
-//         (element === ")" && index[index.length - 1] !== "(") ||
-//         (element === "}" && index[index.length - 1] !== "{")
-//       ) {
-//         return false;
-//       }
-//       index.pop();
+//   for (const key in countMap) {
+//     if (countMap[key] > 0) {
+//       return false;
 //     }
 //   }
-//   return !index.length;
+//   return true;
 // };
 
-// console.log(test(string));
+// console.log(isSimilar([1, 2, 3], [3, 2, 1]));
 
-// for (var i = 0; i < 10; i++) {
-//   setTimeout(j => {
-//     console.log(j);
-//   }, 1000);
-// }
-i;
-for (var i = 1; i <= 3; i++) {
-  setTimeout(
-    j => {
-      console.log(j); // Через замикання i буде дорівнювати 4 для всіх викликів
-    },
-    1000,
-    i
-  );
+// const isValue = (arr1, arr2) => {
+//   if (arr1.lenght !== arr2.lenght) return false;
+
+//   const countMap = {};
+
+//   for (let i = 0; i < arr1.length; i++) {
+//     countMap[arr1[i]] = (countMap[arr1[i]] || 0) + 1;
+//   }
+
+//   for (let i = 0; i < arr2.length; i++) {
+//     if (!arr2[i] in countMap) return false;
+
+//     countMap[arr2[i]] -= 1;
+//   }
+
+//   for (const key in countMap) {
+//     if (countMap[key] > 0) {
+//       return false;
+//     }
+//   }
+
+//   return true;
+// };
+
+function isSimilar(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+  for (current of arr1) {
+    if (!arr2.includes(current)) {
+      return false;
+    }
+  }
+  return true;
 }
+console.log(isSimilar([2, 2, 3], [3, 2, 1]));
