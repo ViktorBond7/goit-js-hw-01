@@ -14,7 +14,7 @@
 function formatDuration(seconds) {
   // Edge case: if duration is 0
   if (seconds === 0) return 'now';
-  debugger;
+
   // Define units in seconds
   const units = [
     { label: 'year', seconds: 365 * 24 * 60 * 60 },
