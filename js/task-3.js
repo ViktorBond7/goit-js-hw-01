@@ -128,15 +128,15 @@ const fizzBuzz = num => {
 // console.log(fizzBuzz(30));
 // const promt = prompt('write minute');
 
-const foo = promt => {
-  const hour = Math.floor(promt / 60);
-  const minute = promt % 60;
-  const rezalt = `${String(hour).padStart(2, '0')}:${String(minute).padStart(
-    2,
-    '0'
-  )}`;
-  return rezalt;
-};
+// const foo = promt => {
+//   const hour = Math.floor(promt / 60);
+//   const minute = promt % 60;
+//   const rezalt = `${String(hour).padStart(2, '0')}:${String(minute).padStart(
+//     2,
+//     '0'
+//   )}`;
+//   return rezalt;
+// };
 // console.log(foo(promt));
 
 // *************
@@ -148,19 +148,83 @@ const foo = promt => {
 // Зверніть увагу, що в масиві може бути кілька обʼєктів з однаковою
 // назвою фрукта, це також треба урахувати.
 
-const fruits = [
-  { name: 'Яблуко', price: 45, quantity: 7 },
-  { name: 'Апельсин', price: 60, quantity: 4 },
-  { name: 'Банан', price: 125, quantity: 8 },
-  { name: 'Груша', price: 350, quantity: 2 },
-  { name: 'Виноград', price: 440, quantity: 3 },
-  { name: 'Банан', price: 125, quantity: 3 },
-];
-const calcTotalPrice = (fruits, fruitName) => {
-  let look = fruits
-    .filter(fruit => fruit.name === fruitName)
-    .reduce((acum, fruit) => acum + fruit.price * fruit.quantity, 0);
-  return look;
+// const fruits = [
+//   { name: 'Яблуко', price: 45, quantity: 7 },
+//   { name: 'Апельсин', price: 60, quantity: 4 },
+//   { name: 'Банан', price: 125, quantity: 8 },
+//   { name: 'Груша', price: 350, quantity: 2 },
+//   { name: 'Виноград', price: 440, quantity: 3 },
+//   { name: 'Банан', price: 125, quantity: 3 },
+// ];
+// const calcTotalPrice = (fruits, fruitName) => {
+//   let look = fruits
+//     .filter(fruit => fruit.name === fruitName)
+//     .reduce((acum, fruit) => acum + fruit.price * fruit.quantity, 0);
+//   return look;
+// };
+
+// console.log(calcTotalPrice(fruits, 'Банан'));
+
+//****************************?///
+// Створіть об'єкт calculator з наступними методами:
+// read(a, b) - приймає два аргумента і зберігає їх як властивості об'єкта,
+// sum() - повертає сумму збереженних значень (з перевіркою на наявність властивостей в об'єкті),
+// mult() - перемножає збереженні значення і повертає результат (з перевіркою на наявність властивостей в об'єкті),
+// винесіть перевірку на наявність властивостей в об'єкті в окремий метод exist().
+
+// Якщо вказані властивості в обʼєкті відсутні (тобто метод exist повертає false),
+// методи sum і mult мають повертати рядок 'No such propeties'
+// const ctring = '{[()]}';
+
+// const fuu = ctring => {
+//   const arr = ctring.split('');
+
+//   const open = ['{', '[', '('];
+//   const close = [')', ']', '}'];
+
+//   const copy = [];
+
+//   for (const element of arr) {
+//     if (open.includes(element)) {
+//       copy.push(element);
+//     } else {
+//       if (close.includes(element)) {
+//         const last = copy.pop();
+
+//         if (last !== element) {
+//           return false;
+//         }
+//       }
+//     }
+//   }
+//   return copy.length === 0;
+// };
+
+// console.log(fuu(ctring));
+const ctring = '{[()]}';
+
+const fuu = ctring => {
+  const open = ['{', '[', '('];
+  const close = ['}', ']', ')'];
+  const stack = [];
+
+  for (const element of ctring) {
+    if (open.includes(element)) {
+      stack.push(element);
+    } else {
+      const index = close.indexOf(element);
+
+      if (index !== -1) {
+        const last = stack.pop();
+
+        if (last !== open[index]) {
+          return false;
+        }
+      }
+    }
+  }
+
+  return stack.length === 0;
 };
 
-console.log(calcTotalPrice(fruits, 'Банан'));
+console.log(fuu(ctring)); // true ✅

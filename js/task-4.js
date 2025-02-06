@@ -639,3 +639,16 @@
 //     arr.push(i);
 //   }
 // }
+
+const arr1 = [1, 2, 4];
+
+const fuu = arr => {
+  const dd = [];
+  for (let i = 0; i < arr.length; i++) {
+    const element = arr[i];
+
+    dd.push(element);
+  }
+  return dd;
+};
+console.log(fuu(arr1));
